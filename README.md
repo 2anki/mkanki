@@ -4,48 +4,14 @@ An API for generating [Anki](https://apps.ankiweb.net/) decks.
 
 Anki is a tool for [spaced-repetition study](https://ncase.me/remember/).
 
-### Example
+Note: This is a fork of [nornagon/mkanki](https://github.com/nornagon/mkanki).
 
-Here's an example of generating a simple deck with mkanki.
+For examples of how to use this library, see the [examples](./examples) folder.
+
+### Install
 
 ```sh
-$ npm install --save mkanki
-```
-
-```js
-const anki = require('mkanki')
-const m = new anki.Model({
-  name: "Basic (and reversed card)",
-  id: "1542906796044",
-  flds: [
-    { name: "Front" },
-    { name: "Back" }
-  ],
-  req: [
-    [ 0, "all", [ 0 ] ],
-    [ 1, "all", [ 1 ] ]
-  ],
-  tmpls: [
-    {
-      name: "Card 1",
-      qfmt: "{{Front}}",
-      afmt: "{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}",
-    },
-    {
-      name: "Card 2",
-      qfmt: "{{Back}}",
-      afmt: "{{FrontSide}}\n\n<hr id=answer>\n\n{{Front}}",
-    }
-  ],
-})
-
-const d = new anki.Deck(1542998993960, "hi")
-
-d.addNote(m.note(['this is front', 'this is back']))
-
-const p = new anki.Package()
-p.addDeck(d)
-p.writeToFile('deck.apkg')
+npm install --save mkanki
 ```
 
 ## Documentation
@@ -194,7 +160,6 @@ Serializes the package to a file.
 
 - `filename` string - path to the exported package. Conventionally ends in
   `".apkg"`.
-
 
 [anki-template-docs]: https://apps.ankiweb.net/docs/manual.html#cards-and-templates
 [anki-cloze-docs]: https://apps.ankiweb.net/docs/manual.html#cloze-deletion
